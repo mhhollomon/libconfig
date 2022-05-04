@@ -16,7 +16,7 @@ endif()
 
 project(libconfig LANGUAGES C CXX VERSION ${VERSION_STRING})
 option(BUILD_EXAMPLES "Enable examples" ${DEFAULT_BUILD_TESTS})
-option(BUILD_SHARED_LIBS  "Enable shared library" ON)
+option(BUILD_SHARED_LIBS  "Enable shared library" ${DEFAULT_BUILD_TESTS})
 option(BUILD_TESTS "Enable tests" ${DEFAULT_BUILD_TESTS})
 
 set_property(GLOBAL	PROPERTY USE_FOLDERS ON)
