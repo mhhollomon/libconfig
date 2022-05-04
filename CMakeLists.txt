@@ -6,10 +6,18 @@ file(STRINGS "configure.ac"
   VERSION_STRING REGEX ${VERSION_REGEX})
 string(REGEX REPLACE ${VERSION_REGEX} "\\1" VERSION_STRING "${VERSION_STRING}")
 
+if(NOT DEFINED PROJECT_NAME)
+  set(NOT_SUBPROJECT ON)
+  set(DEFAULT_BUILD_TESTS OFF)
+else()
+  set(NOT_PROJECT OFF)
+  set(DEFAULT_BUILD_TESTS ON)
+endif()
+
 project(libconfig LANGUAGES C CXX VERSION ${VERSION_STRING})
-option(BUILD_EXAMPLES "Enable examples" ON)
+option(BUILD_EXAMPLES "Enable examples" ${DEFAULT_BUILD_TESTS})
 option(BUILD_SHARED_LIBS  "Enable shared library" ON)
-option(BUILD_TESTS "Enable tests" ON)
+option(BUILD_TESTS "Enable tests" ${DEFAULT_BUILD_TESTS})
 
 set_property(GLOBAL	PROPERTY USE_FOLDERS ON)
 
